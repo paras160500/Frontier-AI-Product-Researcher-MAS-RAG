@@ -3,7 +3,7 @@
 #----------------------------------------------------------------------------------------
 
 from opensearchpy import OpenSearch
-from ollama_embedding import get_embedding
+from .ollama_embedding import get_embedding
 
 
 #----------------------------------------------------------------------------------------

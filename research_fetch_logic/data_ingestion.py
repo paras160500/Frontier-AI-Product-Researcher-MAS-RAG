@@ -5,8 +5,8 @@
 import json 
 import os 
 import tiktoken 
-from ollama_embedding import get_embedding
-from open_search_client import get_opensearch_client
+from .ollama_embedding import get_embedding
+from .open_search_client import get_opensearch_client
 
 
 #----------------------------------------------------------------------------------------

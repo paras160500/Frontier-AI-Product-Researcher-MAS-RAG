@@ -2,8 +2,8 @@
 #                                   Import Statements
 #----------------------------------------------------------------------------------------
 
-from open_search_client import get_opensearch_client
-from ollama_embedding import get_embedding
+from .open_search_client import get_opensearch_client
+from .ollama_embedding import get_embedding
 
 
 #----------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ def hybrid_search(query : str , top_k = 20):
                     ]
                 }
             },
-            "_source" : ["title" , "abstract","publication_date","patent_id"]
+            "_source" : ["title" , "abstract","publication_date","patent_id" , "claims","classifications","concepts" , "cited_by"]
         }
 
         response = client.search(index=index_name , body=search_query)
@@ -52,7 +52,7 @@ def hybrid_search(query : str , top_k = 20):
             fallback_query = {
                 "size" : top_k,
                 "query" : {"match" : {"abstract" : query}},
-                "_source" : ["title" , "abstract","publication_date","patent_id"]
+                "_source" : ["title" , "abstract","publication_date","patent_id" , "claims","classifications","concepts" , "cited_by"]
             }
             response = client.search(index = index_name , body=fallback_query)
             return response['hits']['hits']
