@@ -3,11 +3,11 @@
 #----------------------------------------------------------------------------------------
 
 from opensearchpy import OpenSearch
-from db_index_initializer import create_index_if_not_exists
-from hybrid_search_logic import hybrid_search
-from open_search_client import get_opensearch_client
-from serper_fetcher import get_and_save_data_from_query
-from data_ingestion import integrate_push_to_db
+from .db_index_initializer import create_index_if_not_exists
+from .hybrid_search_logic import hybrid_search
+from .open_search_client import get_opensearch_client
+from .serper_fetcher import get_and_save_data_from_query
+from .data_ingestion import integrate_push_to_db
 
 #----------------------------------------------------------------------------------------
 #                                   Orchestrating Search
@@ -24,7 +24,7 @@ def search_orchestrator(client : OpenSearch , query : str):
     print(str(len(chunks)) + "********************************")
 
     # Deciding wheather to call the serper or not
-    if len(chunks) < 7:
+    if len(chunks) < 6:
         print("Call Serper API")
         get_and_save_data_from_query(query=query)
         integrate_push_to_db()

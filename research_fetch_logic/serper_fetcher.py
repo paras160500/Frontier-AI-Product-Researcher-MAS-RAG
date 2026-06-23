@@ -3,7 +3,7 @@
 #----------------------------------------------------------------------------------------
 
 import os , requests
-from serper_helper import get_data_and_save_to_file,get_serpapi_url,fetch_insider_func
+from .serper_helper import get_data_and_save_to_file,get_serpapi_url,fetch_insider_func
 
 
 #----------------------------------------------------------------------------------------
