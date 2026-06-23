@@ -64,7 +64,7 @@ def create_index_if_not_exists(client:OpenSearch , index_name):
 
 
 #----------------------------------------------------------------------------------------
-#                                   Initializing Index
+#                                   Checking the Functionality
 #----------------------------------------------------------------------------------------
 
 from open_search_client import get_opensearch_client

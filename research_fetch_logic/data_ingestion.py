@@ -1,8 +1,17 @@
+#----------------------------------------------------------------------------------------
+#                                   Import Statements
+#----------------------------------------------------------------------------------------
+
 import json 
 import os 
 import tiktoken 
 from ollama_embedding import get_embedding
 from open_search_client import get_opensearch_client
+
+
+#----------------------------------------------------------------------------------------
+#                                   Ingestion Logic
+#----------------------------------------------------------------------------------------
 
 def load_patent_data(dir_path):
     """
@@ -65,17 +74,22 @@ def index_patent_data(client ,index_name , patent_data):
     print(f"Indexed {len(patent_data)} patents data into {index_name} index.")
 
 
-if __name__ == "__main__":
-    dir_path = "results"
-    host = 'localhost'
-    port = 9200 
-    client = get_opensearch_client(host , port)
-    index_name = "patents"
 
-    try:
-        patent_data = load_patent_data(dir_path)
-        print(f"Loaded {len(patent_data)} patents from '{dir_path}'")
-        index_patent_data(client,index_name,patent_data)
-        print(f"Indexed {len(patent_data)} patents into '{index_name}' index.")
-    except Exception as e:
-        print(f"Error : {e}")
+#----------------------------------------------------------------------------------------
+#                                 Checking Implementation
+#----------------------------------------------------------------------------------------
+
+# if __name__ == "__main__":
+#     dir_path = "results"
+#     host = 'localhost'
+#     port = 9200 
+#     client = get_opensearch_client(host , port)
+#     index_name = "patents"
+
+#     try:
+#         patent_data = load_patent_data(dir_path)
+#         print(f"Loaded {len(patent_data)} patents from '{dir_path}'")
+#         index_patent_data(client,index_name,patent_data)
+#         print(f"Indexed {len(patent_data)} patents into '{index_name}' index.")
+#     except Exception as e:
+#         print(f"Error : {e}")

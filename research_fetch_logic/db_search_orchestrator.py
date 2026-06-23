@@ -6,6 +6,7 @@ from opensearchpy import OpenSearch
 from db_index_initializer import create_index_if_not_exists
 from hybrid_search_logic import hybrid_search
 from open_search_client import get_opensearch_client
+from serper_fetcher import get_and_save_data_from_query
 
 #----------------------------------------------------------------------------------------
 #                                   Orchestrating Search
@@ -19,6 +20,7 @@ def search_orchestrator(client : OpenSearch , query : str):
 
     # Perform the Hybrid search on the vectorstore.
     chunks = hybrid_search(query=query,top_k=12)
+    print(str(len(chunks)) + "********************************")
 
     # Deciding wheather to call the serper or not
     if len(chunks) < 8:
@@ -31,14 +33,22 @@ def search_orchestrator(client : OpenSearch , query : str):
 
         if top_score < 0.9:
             print("+++++++++++---------------------------+++++++We have to call Serper")
+            get_and_save_data_from_query(query=query)
+            print("Data Saved....")
 
         elif (top_score < 1.0 and diff < 0.15):
             print("+++++++++++++++++++++++++++++++++++++++++++++++++We have to call Serper")
+            get_and_save_data_from_query(query=query)
+            print("Data Saved....")
 
         else:
             print("---------------------------------------------------------------------------OPEN SEARCH")
 
 
+#----------------------------------------------------------------------------------------
+#                                   Checking Functionality
+#----------------------------------------------------------------------------------------
+
 if __name__ == "__main__":
     client = get_opensearch_client("localhost" , 9200)
-    search_orchestrator(client=client , query = "Condom Battery")
+    search_orchestrator(client=client , query = "Lithium Battery")
