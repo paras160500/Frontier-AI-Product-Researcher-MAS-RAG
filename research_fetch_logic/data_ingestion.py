@@ -74,6 +74,28 @@ def index_patent_data(client ,index_name , patent_data):
     print(f"Indexed {len(patent_data)} patents data into {index_name} index.")
 
 
+def integrate_push_to_db():
+    """
+        Combining both of the above function to first make chunks
+        and store that chunks into the database index.
+        Required Folder:
+            It will only rin right after the fetch. There should be results dir
+            in this current directory in order to run this.
+    """
+    dir_path = "results"
+    host = 'localhost'
+    port = 9200
+    client = get_opensearch_client(host , port)
+    index_name = "patents"
+
+    try:
+        patent_data = load_patent_data(dir_path)
+        print(f"Loaded {len(patent_data)} patents from '{dir_path}'")
+        index_patent_data(client,index_name,patent_data)
+        print(f"Indexed {len(patent_data)} patents into '{index_name}' index.")
+    except Exception as e:
+        print(f"Error : {e}")
+        
 
 #----------------------------------------------------------------------------------------
 #                                 Checking Implementation
@@ -93,3 +115,7 @@ def index_patent_data(client ,index_name , patent_data):
 #         print(f"Indexed {len(patent_data)} patents into '{index_name}' index.")
 #     except Exception as e:
 #         print(f"Error : {e}")
+
+
+
+#results

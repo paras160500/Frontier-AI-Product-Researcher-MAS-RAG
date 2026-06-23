@@ -19,7 +19,7 @@ def get_and_save_data_from_query(query : str):
         Returns:
             Nothin, but store the file in the system.
     """
-    count = 1
+    count = 0
     SERPER_API_KEY = os.getenv("SERPER_API_KEY")
     url = f"https://serpapi.com/search?engine=google_patents&q={query}&api_key={SERPER_API_KEY}"
 

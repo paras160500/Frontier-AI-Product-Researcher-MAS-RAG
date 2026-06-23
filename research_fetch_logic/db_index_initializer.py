@@ -67,10 +67,10 @@ def create_index_if_not_exists(client:OpenSearch , index_name):
 #                                   Checking the Functionality
 #----------------------------------------------------------------------------------------
 
-from open_search_client import get_opensearch_client
+# from open_search_client import get_opensearch_client
 
-if __name__ == "__main__":
-    # Get the client first 
-    client = get_opensearch_client("localhost" , 9200)
-    # Pass the client and the query to the function
-    create_index_if_not_exists(client=client , index_name= 'patents')
+# if __name__ == "__main__":
+#     # Get the client first 
+#     client = get_opensearch_client("localhost" , 9200)
+#     # Pass the client and the query to the function
+#     create_index_if_not_exists(client=client , index_name= 'patents')
