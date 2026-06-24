@@ -45,11 +45,12 @@ if mode == "🔎 Patent Search":
 
     search_option = st.selectbox(
         "Select Search Type",
-        {
-            "Keyword Search 🔎": 1,
-            "Semantic Search 🧠": 2,
-            "Hybrid Search ⚡": 3
-        }
+        options=["1", "2", "3"],
+        format_func=lambda x: {
+            "1": "Keyword Search 🔎",
+            "2": "Semantic Search 🧠",
+            "3": "Hybrid Search ⚡"
+        }[x]
     )
 
 # -----------------------------
@@ -71,6 +72,7 @@ if st.button("Run", type="primary"):
         with st.spinner("Searching patents..."):
 
             try:
+                print(query , search_option)
                 result_md = search_patents(query, search_option)
 
                 st.success("Search Complete")

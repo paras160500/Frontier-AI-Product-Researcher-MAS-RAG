@@ -20,11 +20,11 @@ def search_patents(query: str, search_option: int) -> str:
         # -----------------------------
         # Select Search Type
         # -----------------------------
-        if search_option == 1:
+        if search_option == "1":
             search_type = "🔎 Keyword Search"
             results = keyword_search(query, client, 10)
 
-        elif search_option == 2:
+        elif search_option == "2":
             search_type = "🧠 Semantic Search"
             results = semantic_search(query, client, 10)
 
@@ -47,7 +47,7 @@ def search_patents(query: str, search_option: int) -> str:
                 clean_results.append(r)
 
         results = clean_results
-        print(results)
+        # print(results)
 
         # -----------------------------
         # HEADER (clean + compact)
