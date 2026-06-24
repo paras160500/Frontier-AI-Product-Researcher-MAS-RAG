@@ -102,61 +102,190 @@ class AnalyszePatentTrendsTool(BaseTool):
         )
 
         prompt = f"""
-            You are a world-class Patent Intelligence Analyst, Technology Futurist,
-            and IP Strategy Consultant.
+                You are a Chief Patent Intelligence Strategist.
 
-            Your job is not to summarize patents.
+                PATENT DATA
+                ========================
+                {patents_data}
+                ========================
 
-            Your job is to discover:
-            - Hidden technology patterns
-            - Engineering evolution paths
-            - Emerging research directions
-            - Future commercial opportunities
-            - Competitive gaps
+                Your objective is to create a PREMIUM PATENT INTELLIGENCE REPORT.
 
-            PATENT DATA:
-            ========================
-            {patents_data}
-            ========================
+                This report will be displayed directly inside a Streamlit application.
 
-            Perform a deep patent landscape analysis.
+                Therefore the report must be:
 
-            Instructions:
+                - Beautiful markdown
+                - Executive-friendly
+                - Highly visual
+                - Rich in tables
+                - Rich in strategic insights
 
-            1. TECHNOLOGY CLUSTERS
-            - Group patents into major technology domains.
-            - Explain the common technical theme behind each cluster.
-            - Estimate relative prominence.
+                DO NOT generate long paragraphs.
 
-            2. EMERGING TECHNOLOGY TRAJECTORIES
-            - Identify technologies showing acceleration.
-            - Explain why these areas appear to be gaining momentum.
-            - Highlight enabling technologies and convergence trends.
+                Prefer:
+                - Tables
+                - Bullet points
+                - Rankings
+                - Opportunity scores
+                - Strategic callouts
 
-            3. FUTURE MARKET SIGNALS (3-5 YEARS)
-            - Predict industries likely to benefit.
-            - Predict products likely to emerge.
-            - Explain the reasoning chain from patents to market impact.
+                Use a few professional emojis only.
 
-            4. WHITE SPACE OPPORTUNITIES
-            - Identify technical gaps.
-            - Suggest areas with weak patent coverage.
-            - Highlight opportunities for new filings.
+                Maximum:
+                1 emoji per major section.
 
-            5. COMPETITIVE INTELLIGENCE
-            - Infer likely strategic directions competitors are pursuing.
-            - Identify potential disruption risks.
+                ===================================================
+                REPORT FORMAT
+                ===================================================
 
-            6. EXECUTIVE SUMMARY
-            - Provide the top 5 most important strategic insights.
+                # 🔍 Patent Intelligence Report
 
-            Output Requirements:
-            - Use markdown.
-            - Use clear headings.
-            - Be analytical rather than descriptive.
-            - Focus on insight generation, not patent summarization.
-            - Support conclusions with evidence from the patent data.
-        """
+                Provide a 2-3 sentence executive overview.
+
+                ---
+
+                # 📌 Executive Summary
+
+                Create a table:
+
+                | Strategic Insight | Impact | Confidence |
+                |------------------|---------|------------|
+
+                Include top 5 insights.
+
+                ---
+
+                # 🧩 Technology Clusters
+
+                Create a table:
+
+                | Cluster | Related Patents | Prominence | Strategic Importance |
+                |----------|----------------|------------|----------------------|
+
+                After table provide:
+
+                ### Key Observations
+
+                - observation
+                - observation
+                - observation
+
+                ---
+
+                # 📈 Emerging Technology Trajectories
+
+                Create a table:
+
+                | Technology Direction | Growth Signal | Confidence |
+                |----------------------|--------------|------------|
+
+                Then explain:
+
+                ### Why It Matters
+
+                - point
+                - point
+                - point
+
+                ---
+
+                # 🚀 Future Market Signals
+
+                Create a table:
+
+                | Industry | Expected Impact | Opportunity |
+                |-----------|----------------|------------|
+
+                Then list:
+
+                ### Emerging Products
+
+                - product
+                - product
+                - product
+
+                ---
+
+                # 🎯 White Space Opportunities
+
+                Create a table:
+
+                | Opportunity Area | Gap | Filing Potential |
+                |-----------------|-----|------------------|
+
+                Rank opportunities:
+
+                | Rank | Area | Strategic Value |
+                |-------|------|-----------------|
+
+                ---
+
+                # 🏢 Competitive Intelligence
+
+                Create a table:
+
+                | Strategic Direction | Evidence | Risk Level |
+                |--------------------|-----------|-----------|
+
+                Then:
+
+                ### Disruption Risks
+
+                - risk
+                - risk
+                - risk
+
+                ---
+
+                # 🔥 Opportunity Heatmap
+
+                Use markdown table:
+
+                | Area | Opportunity Score |
+                |------|-------------------|
+                | Safety | 🟢 High |
+                | AI Integration | 🟢 High |
+                | Recycling | 🟡 Medium |
+                | Alternative Chemistries | 🟢 High |
+
+                ---
+
+                # 💡 Recommended R&D Investments
+
+                Provide top 5 recommendations.
+
+                ---
+
+                # 🔗 Patent Reference Library
+
+                For EVERY patent found in the input data create a table:
+
+                | Patent Title | Patent Number | Assignee | Why It Matters | Patent URL |
+                |-------------|--------------|----------|----------------|------------|
+
+                IMPORTANT:
+                If URL exists in source data include it.
+                Never invent URLs.
+
+                ---
+
+                # ⭐ Final Strategic Conclusion
+
+                Provide a concise executive conclusion.
+
+                ===================================================
+                OUTPUT RULES
+                ===================================================
+
+                - Markdown only
+                - No XML
+                - No JSON
+                - No code blocks
+                - No chain of thought
+                - No explanations about methodology
+                - Focus on strategic insight
+            """
 
         response = open_ai_llm.call(prompt)
 

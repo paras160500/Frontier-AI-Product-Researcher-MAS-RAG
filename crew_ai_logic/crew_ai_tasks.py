@@ -38,24 +38,37 @@ search_patents_task = Task(
 
 analyze_trends_task = Task(
     description="""
-    Analyze the patent dataset provided in the context.
+    Create a premium executive-level patent intelligence report.
 
-    Produce:
+    The report must:
 
-    1. Technology Clusters
-    2. Emerging Technology Trajectories
-    3. Future Market Signals (3-5 years)
-    4. White Space Opportunities
-    5. Competitive Intelligence
-    6. Executive Summary
+    - Be visually appealing in Markdown
+    - Include tables wherever possible
+    - Include strategic insights
+    - Include opportunity scoring
+    - Include competitive intelligence
+    - Include white-space analysis
+    - Include future technology trajectories
+    - Include patent references and URLs
 
-    Focus on strategic insights rather than patent summaries.
+    This report will be consumed by:
+    - CTOs
+    - R&D leaders
+    - Innovation teams
+    - Investors
+
+    Avoid generic patent summaries.
+    Focus on strategic intelligence.
     """,
+
     expected_output="""
-    A comprehensive patent intelligence report including:
-    technology clusters, future trends, market opportunities,
-    white-space opportunities, competitive intelligence,
-    and executive recommendations.
+    A premium consulting-style patent intelligence report
+    including executive summary tables,
+    technology cluster analysis,
+    opportunity matrices,
+    competitive intelligence,
+    market forecasts,
+    and a patent reference library with URLs.
     """,
     agent=patent_intelligence_agent,
     context=[search_patents_task]

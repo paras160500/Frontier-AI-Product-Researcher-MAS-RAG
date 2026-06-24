@@ -16,7 +16,7 @@ def generate_crew_for_patent_analysis(query : str):
             analyze_trends_task
         ],
         process=Process.sequential,
-        verbose=True
+        verbose=False
     )
 
     # Kicking off the crew
@@ -26,8 +26,8 @@ def generate_crew_for_patent_analysis(query : str):
         }
     )
 
-    print(result)
+    return(str(result))
 
 
-if __name__ == "__main__":
-    generate_crew_for_patent_analysis("Bio Fuel")
+# if __name__ == "__main__":
+#     generate_crew_for_patent_analysis("Bio Fuel")
